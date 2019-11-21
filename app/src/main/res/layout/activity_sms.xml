@@ -4,79 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SMSActivity"
+    android:layout_margin="8dp"
     android:orientation="vertical"
-    android:layout_margin="8dp">
+    tools:context=".Activity.SMSActivity">
+
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="serif"
+        android:text="Group Name"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#000000" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:fontFamily="serif"
+            android:text="To :"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="To :"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20"
-                android:gravity="center"
-                android:layout_alignParentRight="true"/>
-
-        </RelativeLayout>
 
         <TextView
             android:id="@+id/to_names"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Names"
-            android:textSize="18sp"
+            android:layout_marginTop="5dp"
             android:fontFamily="serif"
-            android:layout_marginTop="5dp"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000"/>
+        android:background="#C4C4C4" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
-        android:orientation="vertical"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text="Message :"
             android:textColor="#000000"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:hint="Type your message here"
-            android:textSize="18sp"
-            android:layout_marginTop="8dp"/>
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -84,10 +88,10 @@
         android:id="@+id/send_btn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:fontFamily="serif"
         android:text="Send"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:fontFamily="serif"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.priyank.sendsms.Adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.priyank.sendsms.Activity.SMSActivity;
 import com.priyank.sendsms.Constant.AppUtils;
 import com.priyank.sendsms.Constant.SharedPreference;
 import com.priyank.sendsms.Model.GroupModel;
+import com.priyank.sendsms.Model.SmsModel;
 import com.priyank.sendsms.R;
 
 import java.util.ArrayList;
@@ -41,10 +44,10 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyAdapter> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i=0; i<(list.get(position).getList()).size(); i++) {
-                    AppUtils.LogE("List>> " + (list.get(position).getList()).get(i).getName() + ":" +
-                            (list.get(position).getList()).get(i).getNumber());
-                }
+                Intent intent = new Intent(activity, SMSActivity.class);
+                intent.putExtra("GroupName", list.get(position).getGroup());
+                intent.putExtra("GroupMembers", list.get(position).getList());
+                activity.startActivity(intent);
             }
         });
 

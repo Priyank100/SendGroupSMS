@@ -65,10 +65,29 @@ public class AppUtils {
                 }
             }
         }
-        if(cur!=null){
+        if (cur != null) {
             cur.close();
             dialog.dismiss();
         }
         return contactList;
+    }
+
+    public static String CommaString(ArrayList<SmsModel> theAray, String itemType) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("");
+        for (int i = 0; i < theAray.size(); i++) {
+            if (i > 0) {
+                sb.append(",");
+            }
+            if (itemType.equals("Names")) {
+                String item = theAray.get(i).getName();
+                sb.append(item);
+            } else {
+                String item = theAray.get(i).getNumber();
+                sb.append(item);
+            }
+        }
+        sb.append("");
+        return sb.toString();
     }
 }
