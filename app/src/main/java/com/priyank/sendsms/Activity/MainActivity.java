@@ -28,13 +28,8 @@ import com.priyank.sendsms.R;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-//    EditText numberText;
-//    Button sendBtn;
-
     String[] allPermissions;
     final int MULTIPLE_PERMISSIONS = 123;
-
-//    SmsManager sms;
 
     FloatingActionButton addFabBtn;
     public TextView noGroupText;
@@ -49,10 +44,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        numberText = findViewById(R.id.number_text);
-//        sendBtn = findViewById(R.id.send_btn);
-//        sendBtn.setEnabled(false);
-
         addFabBtn = findViewById(R.id.add_fab_btn);
         noGroupText = findViewById(R.id.no_group_text);
         recyclerView = findViewById(R.id.recycler_view);
@@ -65,22 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Manifest.permission.WRITE_CONTACTS};
 
         if (hasPermissions(MainActivity.this, allPermissions)) {
-            //sendBtn.setEnabled(true);
-
         } else {
             ActivityCompat.requestPermissions(this, allPermissions, MULTIPLE_PERMISSIONS);
         }
-
-        /*sendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (numberText.getText().toString().trim().isEmpty()) {
-                      AppUtils.Toast(MainActivity.this, "Enter Number");
-                    return;
-                }
-                sendSMS(numberText.getText().toString().trim(), "Hello");
-            }
-        });*/
 
         if (SharedPreference.getPreferences(MainActivity.this).contains("GroupList")) {
             grpNameList = SharedPreference.getPreferenceList(MainActivity.this, "GroupList");
@@ -124,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             return;
                         }
                     }
-//                    sendBtn.setEnabled(true);
                     AppUtils.Toast(MainActivity.this, "Permission Allowed...");
                 } else {
                     ActivityCompat.requestPermissions(MainActivity.this, allPermissions, MULTIPLE_PERMISSIONS);
@@ -178,13 +155,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /*public void sendSMS(String num, String msg) {
-        String numbers[] = {num};
-
-        sms = SmsManager.getDefault();
-
-        for(String number : numbers) {
-            sms.sendTextMessage(number, null, msg, null, null);
-        }
-    }*/
 }
