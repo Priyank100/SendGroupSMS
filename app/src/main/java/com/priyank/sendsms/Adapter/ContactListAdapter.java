@@ -42,6 +42,8 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         holder.number.setText(myList.get(position).getNumber());
 
         holder.checkBox.setTag(position);
+        holder.checkBox.setChecked(myList.get(position).isSelected());
+
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +88,12 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         }
     }
 
-    public ArrayList<SmsModel> getFilterList() {
+    public ArrayList<SmsModel> getSelectedList() {
         return filterList;
+    }
+
+    public void updateList(ArrayList<SmsModel> list){
+        myList = list;
+        notifyDataSetChanged();
     }
 }

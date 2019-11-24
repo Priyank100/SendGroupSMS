@@ -30,6 +30,7 @@ public class AppUtils {
         dialog.setCancelable(false);
         dialog.show();
         ArrayList<SmsModel> contactList = new ArrayList<>();
+        ArrayList<SmsModel> noRepeat = null;
         ContentResolver cr = activity.getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
 
@@ -60,6 +61,19 @@ public class AppUtils {
                         }
                     });
 
+                    noRepeat = new ArrayList<SmsModel>();
+
+                    for (SmsModel event : contactList) {
+                        boolean isFound = false;
+                        for (SmsModel e : noRepeat) {
+                            if (e.getName().equals(event.getName()) || (e.equals(event))) {
+                                isFound = true;
+                                break;
+                            }
+                        }
+                        if (!isFound) noRepeat.add(event);
+                    }
+
                     pCur.close();
                     dialog.dismiss();
                 }
@@ -69,7 +83,8 @@ public class AppUtils {
             cur.close();
             dialog.dismiss();
         }
-        return contactList;
+//        return contactList;
+        return noRepeat;
     }
 
     public static String CommaString(ArrayList<SmsModel> theAray, String itemType) {
@@ -89,5 +104,17 @@ public class AppUtils {
         }
         sb.append("");
         return sb.toString();
+    }
+
+    public static ArrayList<SmsModel> filterList(Activity activity, String str, ArrayList<SmsModel> list) {
+        ArrayList<SmsModel> filterList = new ArrayList<>();
+        if (!str.isEmpty()) {
+            for (SmsModel d : list) {
+                if (d.getName().toLowerCase().contains(str.toLowerCase())) {
+                    filterList.add(d);
+                }
+            }
+        }
+        return filterList;
     }
 }
