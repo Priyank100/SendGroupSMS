@@ -105,16 +105,4 @@ public class AppUtils {
         sb.append("");
         return sb.toString();
     }
-
-    public static ArrayList<SmsModel> filterList(Activity activity, String str, ArrayList<SmsModel> list) {
-        ArrayList<SmsModel> filterList = new ArrayList<>();
-        if (!str.isEmpty()) {
-            for (SmsModel d : list) {
-                if (d.getName().toLowerCase().contains(str.toLowerCase())) {
-                    filterList.add(d);
-                }
-            }
-        }
-        return filterList;
-    }
 }
