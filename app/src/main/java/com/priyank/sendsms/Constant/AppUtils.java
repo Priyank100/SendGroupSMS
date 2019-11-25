@@ -1,6 +1,7 @@
 package com.priyank.sendsms.Constant;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -8,7 +9,10 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.priyank.sendsms.Activity.MainActivity;
+import com.priyank.sendsms.CustomProgress.SpotsDialog;
 import com.priyank.sendsms.Model.SmsModel;
+import com.priyank.sendsms.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,10 +29,6 @@ public class AppUtils {
     }
 
     public static ArrayList<SmsModel> getContactList(Activity activity) {
-        ProgressDialog dialog = new ProgressDialog(activity);
-        dialog.setMessage("Loading...");
-        dialog.setCancelable(false);
-        dialog.show();
         ArrayList<SmsModel> contactList = new ArrayList<>();
         ArrayList<SmsModel> noRepeat = null;
         ContentResolver cr = activity.getContentResolver();
@@ -73,17 +73,13 @@ public class AppUtils {
                         }
                         if (!isFound) noRepeat.add(event);
                     }
-
                     pCur.close();
-                    dialog.dismiss();
                 }
             }
         }
         if (cur != null) {
             cur.close();
-            dialog.dismiss();
         }
-//        return contactList;
         return noRepeat;
     }
 

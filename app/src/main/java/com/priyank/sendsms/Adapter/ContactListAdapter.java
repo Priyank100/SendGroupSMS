@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.priyank.sendsms.Constant.AppUtils;
 import com.priyank.sendsms.Model.SmsModel;
 import com.priyank.sendsms.R;
 
@@ -18,8 +19,8 @@ import java.util.Iterator;
 
 public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.MyAdapter> {
     Activity activity;
-    ArrayList<SmsModel> myList;
-    ArrayList<SmsModel> filterList;
+    public ArrayList<SmsModel> myList;
+    public static ArrayList<SmsModel> filterList;
 
     public ContactListAdapter(Activity activity, ArrayList<SmsModel> list) {
         this.activity = activity;
@@ -36,20 +37,18 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull final ContactListAdapter.MyAdapter holder, int position) {
-
-        holder.checkBox.setChecked(myList.get(position).isSelected());
         holder.name.setText(myList.get(position).getName());
         holder.number.setText(myList.get(position).getNumber());
 
+        holder.checkBox.setChecked(myList.get(position).getSelected());
         holder.checkBox.setTag(position);
-        holder.checkBox.setChecked(myList.get(position).isSelected());
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Integer pos = (Integer) holder.checkBox.getTag();
 
-                if (myList.get(pos).isSelected()) {
+                if (myList.get(pos).getSelected()) {
                     myList.get(pos).setSelected(false);
 
                     Iterator<SmsModel> iterator = filterList.iterator();
@@ -61,11 +60,12 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
                     }
 
                 } else {
-                    myList.get(pos).setSelected(true);
-                    SmsModel model = new SmsModel();
-                    model.setName(myList.get(pos).getName());
-                    model.setNumber(myList.get(pos).getNumber());
-                    filterList.add(model);
+                        myList.get(pos).setSelected(true);
+                        SmsModel model = new SmsModel();
+                        model.setName(myList.get(pos).getName());
+                        model.setNumber(myList.get(pos).getNumber());
+                        model.setSelected(myList.get(pos).getSelected());
+                        filterList.add(model);
                 }
             }
         });
@@ -88,7 +88,7 @@ public class ContactListAdapter extends RecyclerView.Adapter<ContactListAdapter.
         }
     }
 
-    public ArrayList<SmsModel> getSelectedList() {
+    public ArrayList<SmsModel> getFilterList() {
         return filterList;
     }
 

@@ -5,9 +5,19 @@ import android.os.Parcelable;
 
 public class SmsModel implements Parcelable {
 
+   /* static SmsModel instance;
+
+    public static SmsModel getInstance (){
+
+        if(null == instance){
+            instance = new SmsModel();
+        }
+        return instance;
+    }*/
+
     private String name;
     private String number;
-    private boolean selected;
+    private boolean isSelected;
 
     public SmsModel() {
     }
@@ -33,12 +43,12 @@ public class SmsModel implements Parcelable {
         this.number = number;
     }
 
-    public boolean isSelected() {
-        return selected;
+    public boolean getSelected() {
+        return isSelected;
     }
 
     public void setSelected(boolean selected) {
-        this.selected = selected;
+        this.isSelected = selected;
     }
 
     @Override

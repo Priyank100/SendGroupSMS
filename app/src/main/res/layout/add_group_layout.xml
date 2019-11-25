@@ -1,67 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="8dp">
 
-    <LinearLayout
+
+    <EditText
+        android:id="@+id/group_name"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:background="@drawable/edittext_bg"
+        android:capitalize="words"
+        android:hint="Enter Group Name"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/group_name"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:hint="Enter Group Name"
-            android:paddingLeft="10dp"
-            android:textSize="20sp"
-            android:singleLine="true"
-            android:capitalize="words"
-            android:background="@drawable/edittext_bg" />
-
-        <EditText
-            android:id="@+id/search_name"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="40dp"
-            android:hint="Search Contact Name"
-            android:paddingLeft="10dp"
-            android:textSize="20sp"
-            android:singleLine="true"
-            android:capitalize="words"
-            android:background="@drawable/edittext_bg"
-            android:imeOptions="actionSearch"
-            android:visibility="gone"/>
-
-        <ImageButton
-            android:id="@+id/filter_btn"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:background="@drawable/ic_filter"
-            android:layout_marginLeft="5dp"/>
-
-    </LinearLayout>
-
+    <EditText
+        android:id="@+id/search_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edittext_bg"
+        android:capitalize="words"
+        android:hint="Search Contact Name"
+        android:imeOptions="actionSearch"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_weight="1"
+        android:layout_marginTop="5dp"></androidx.recyclerview.widget.RecyclerView>
 
     <Button
         android:id="@+id/add_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:text="Add"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:background="@color/colorPrimaryDark"/>
+        android:textSize="20sp" />
 
 </LinearLayout>
