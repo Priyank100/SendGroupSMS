@@ -149,16 +149,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyAdapter> {
                 if ((grList.get(pos).getList()).get(i).getName().equals(m.getName())) {
                     AppUtils.LogE("pos>> " + j);
                     list.get(j).setSelected(true);
-
-//                    SmsModel model = new SmsModel();
-//                    model.setName(list.get(j).getName());
-//                    model.setNumber(list.get(j).getNumber());
-//                    model.setSelected(list.get(j).getSelected());
-//                    ContactListAdapter.filterList.add(model);
-
-//                    ContactListAdapter.filterList.get(pos).setSelected(true);
-//                    ContactListAdapter.filterList.get(j).setName(list.get(j).getName());
-//                    ContactListAdapter.filterList.get(j).setNumber(list.get(j).getNumber());
                 }
             }
         }
